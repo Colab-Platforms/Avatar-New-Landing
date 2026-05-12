@@ -1,0 +1,164 @@
+Avatar Landing Page - Next.js Project Structure
+================================================
+
+avatar-landing/
+│
+├── app/                                    # Next.js App Router
+│   ├── layout.tsx                         # Root layout with fonts & metadata
+│   ├── page.tsx                           # Home page (main entry)
+│   ├── globals.css                        # Global styles & animations
+│   └── favicon.ico                        # Site favicon
+│
+├── components/                             # React Components
+│   ├── AnnouncementBar.tsx                # Top promotional banner
+│   ├── Navbar.tsx                         # Navigation with mobile menu
+│   ├── HeroSlider.tsx                     # Hero section with typewriter
+│   ├── StatsStrip.tsx                     # Statistics display
+│   ├── WhyChooseUs.tsx                    # Why choose section
+│   ├── Programs.tsx                       # Programs/courses grid
+│   ├── WhatYouLearn.tsx                   # Curriculum highlights
+│   ├── DemoVideo.tsx                      # Demo video section
+│   ├── Benefits.tsx                       # Benefits & outcomes
+│   ├── Certifications.tsx                 # Certification showcase
+│   ├── HowToEnroll.tsx                    # Enrollment steps
+│   ├── Testimonials.tsx                   # Customer testimonials
+│   ├── FAQ.tsx                            # Frequently asked questions
+│   ├── FinalCTA.tsx                       # Final call-to-action
+│   ├── Footer.tsx                         # Footer with newsletter
+│   └── Logo.tsx                           # Reusable logo component
+│
+├── public/                                 # Static assets
+│   └── (place your images here)
+│
+├── node_modules/                           # Dependencies (auto-generated)
+│
+├── .next/                                  # Build output (auto-generated)
+│
+├── Configuration Files
+│   ├── package.json                       # Dependencies & scripts
+│   ├── package-lock.json                  # Locked dependencies
+│   ├── tsconfig.json                      # TypeScript configuration
+│   ├── tailwind.config.ts                 # Tailwind CSS configuration
+│   ├── next.config.ts                     # Next.js configuration
+│   ├── postcss.config.mjs                 # PostCSS configuration
+│   ├── eslint.config.mjs                  # ESLint configuration
+│   └── .gitignore                         # Git ignore rules
+│
+└── Documentation Files
+    ├── README.md                          # Full documentation
+    ├── STRUCTURE.md                       # Architecture details
+    ├── QUICKSTART.md                      # Quick start guide
+    └── PROJECT_STRUCTURE.txt              # This file
+
+Component Breakdown
+===================
+
+Layout Components:
+- Navbar.tsx          : Sticky navigation, mobile menu, scroll effects
+- Footer.tsx          : Multi-column layout, newsletter, social links
+
+Hero & CTA:
+- HeroSlider.tsx      : Auto-rotating slides, typewriter effect
+- FinalCTA.tsx        : Final enrollment call-to-action
+
+Content Sections:
+- WhyChooseUs.tsx     : Features and benefits
+- Programs.tsx        : Course offerings grid
+- WhatYouLearn.tsx    : Curriculum details
+- Benefits.tsx        : Learning outcomes
+- Certifications.tsx  : Certificate showcase
+- HowToEnroll.tsx     : Enrollment process
+
+Interactive:
+- DemoVideo.tsx       : Video player section
+- Testimonials.tsx    : Infinite scroll carousel
+- FAQ.tsx             : Accordion with Q&A
+
+Utility:
+- AnnouncementBar.tsx : Promotional banner
+- StatsStrip.tsx      : Statistics display
+- Logo.tsx            : Reusable SVG logo
+
+Tech Stack
+==========
+
+Framework:     Next.js 15 (App Router)
+Language:      TypeScript
+Styling:       Tailwind CSS
+Icons:         Lucide React
+Fonts:         Google Fonts (Inter, Playfair Display)
+Image Opt:     Next.js Image component
+
+Key Features
+============
+
+✓ Fully responsive (mobile, tablet, desktop)
+✓ TypeScript for type safety
+✓ Component-based architecture
+✓ SEO optimized
+✓ Accessibility compliant
+✓ Performance optimized
+✓ Smooth animations
+✓ Mobile menu
+✓ Scroll effects
+✓ Image optimization
+
+Scripts
+=======
+
+npm run dev      : Start development server (http://localhost:3000)
+npm run build    : Build for production
+npm start        : Start production server
+npm run lint     : Run ESLint
+
+File Sizes (Approximate)
+========================
+
+Total Components:  15 files
+Total Lines:       ~3,500 lines of code
+Build Size:        Optimized for production
+Bundle Size:       Minimal (code splitting enabled)
+
+Dependencies
+============
+
+Production:
+- next
+- react
+- react-dom
+- lucide-react
+
+Development:
+- typescript
+- @types/node
+- @types/react
+- @types/react-dom
+- tailwindcss
+- eslint
+- eslint-config-next
+
+Browser Support
+===============
+
+✓ Chrome (latest)
+✓ Firefox (latest)
+✓ Safari (latest)
+✓ Edge (latest)
+✓ Mobile browsers
+
+Deployment
+==========
+
+Recommended: Vercel (one-click deployment)
+Alternative: Any Node.js hosting platform
+
+Quick Deploy:
+1. Push to GitHub
+2. Import to Vercel
+3. Deploy automatically
+
+---
+
+For detailed information, see README.md
+For quick start, see QUICKSTART.md
+For architecture, see STRUCTURE.md

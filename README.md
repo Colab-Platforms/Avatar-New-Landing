@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Avatar Landing Page - Next.js
 
-## Getting Started
+A production-grade landing page for Avatar AI Training & Workshops, built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Tech Stack**: Next.js 15 (App Router), TypeScript, Tailwind CSS
+- **Fully Responsive**: Mobile-first design with optimized layouts for all devices
+- **Performance Optimized**: Image optimization, lazy loading, and efficient animations
+- **SEO Ready**: Proper meta tags, semantic HTML, and structured data
+- **Accessible**: WCAG compliant with proper ARIA labels and keyboard navigation
+- **Component-Based**: Modular, reusable components for easy maintenance
+- **Type-Safe**: Full TypeScript support for better developer experience
+
+## 📁 Project Structure
+
+```
+avatar-landing/
+├── app/
+│   ├── layout.tsx          # Root layout with fonts and metadata
+│   ├── page.tsx            # Home page (main entry point)
+│   └── globals.css         # Global styles and animations
+├── components/
+│   ├── AnnouncementBar.tsx # Top announcement banner
+│   ├── Navbar.tsx          # Navigation with mobile menu
+│   ├── HeroSlider.tsx      # Hero section with typewriter effect
+│   ├── StatsStrip.tsx      # Statistics section
+│   ├── WhyChooseUs.tsx     # Why choose Avatar section
+│   ├── Programs.tsx        # Programs/courses listing
+│   ├── WhatYouLearn.tsx    # Curriculum highlights
+│   ├── DemoVideo.tsx       # Demo video section
+│   ├── Benefits.tsx        # Benefits and outcomes
+│   ├── Certifications.tsx  # Certification showcase
+│   ├── HowToEnroll.tsx     # Enrollment steps
+│   ├── Testimonials.tsx    # Customer testimonials
+│   ├── FAQ.tsx             # Frequently asked questions
+│   ├── FinalCTA.tsx        # Final call-to-action
+│   ├── Footer.tsx          # Footer with links and newsletter
+│   └── Logo.tsx            # Reusable logo component
+├── public/                 # Static assets
+├── tailwind.config.ts      # Tailwind configuration
+├── tsconfig.json           # TypeScript configuration
+└── package.json            # Dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Installation & Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ and npm
 
-## Learn More
+### Steps
 
-To learn more about Next.js, take a look at the following resources:
+1. **Navigate to the project directory**:
+   ```bash
+   cd avatar-landing
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Available Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🎨 Customization
+
+### Colors
+
+Edit `tailwind.config.ts` to customize the color palette:
+
+```typescript
+colors: {
+  navy: {
+    50: '#f3f6fa',
+    // ... other shades
+  },
+  // Add your custom colors
+}
+```
+
+### Fonts
+
+Fonts are configured in `app/layout.tsx`:
+
+```typescript
+const inter = Inter({ subsets: ["latin"] });
+const playfair = Playfair_Display({ weight: ["600", "700"] });
+```
+
+### Content
+
+All content is stored directly in the components. To update:
+
+1. Navigate to the relevant component in `components/`
+2. Update the text, images, or data arrays
+3. Save and the changes will hot-reload
+
+## 🖼️ Images
+
+Currently using Unsplash images via CDN. For production:
+
+1. Download and optimize images
+2. Place them in the `public/` folder
+3. Update image paths in components
+4. Use Next.js `Image` component for optimization
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push your code to GitHub
+2. Import project in [Vercel](https://vercel.com)
+3. Deploy with one click
+
+### Other Platforms
+
+```bash
+npm run build
+npm start
+```
+
+Deploy the `.next` folder to your hosting provider.
+
+## 📱 Responsive Breakpoints
+
+- Mobile: < 640px
+- Tablet: 640px - 1024px
+- Desktop: > 1024px
+
+## ♿ Accessibility
+
+- Semantic HTML elements
+- ARIA labels for interactive elements
+- Keyboard navigation support
+- Focus indicators
+- Alt text for images
+
+## 🔧 Tech Stack
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
+- **Fonts**: Google Fonts (Inter, Playfair Display)
+
+## 📄 License
+
+This project is created for Avatar AI Training & Workshops.
+
+## 🤝 Support
+
+For questions or support, contact: hello@avatar.com
+
+---
+
+Built with ❤️ using Next.js
