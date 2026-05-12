@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 import { X, Home, BookOpen, Star, MessageCircle, HelpCircle, ArrowRight, Mail, Phone, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation"; 
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,13 +12,21 @@ export default function Navbar() {
   const [isWebinarDropdownOpen, setIsWebinarDropdownOpen] = useState(false);
   const [isMobileWebinarOpen, setIsMobileWebinarOpen] = useState(false);
 
+    const pathname = usePathname(); 
+
   useEffect(() => {
+    // Check initial scroll position on mount
+    // setIsScrolled(window.scrollY > 30);
+
+    // console.log("window.scrollY: ", window.scrollY)
+    // console.log("isScrolled: ", isScrolled)
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isScrolled]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {

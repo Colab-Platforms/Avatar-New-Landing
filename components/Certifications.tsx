@@ -58,29 +58,12 @@ export default function Certifications() {
         <div className="reveal order-1 md:order-2">
           <div className="relative">
             <div className="absolute -inset-3 sm:-inset-4 bg-navy-700/10 rounded-3xl rotate-2"></div>
-            <div className="relative bg-white rounded-2xl shadow-2xl p-5 sm:p-8 border border-navy-100">
-              <div className="flex items-center justify-between border-b border-navy-100 pb-3 sm:pb-4 mb-4 sm:mb-6">
-                <div className="flex items-center gap-2">
-                  <Logo className="w-6 h-6 sm:w-7 sm:h-7" />
-                  <span className="font-bold text-navy-700 text-sm sm:text-base">Avatar</span>
-                </div>
-                <span className="text-[10px] sm:text-xs text-navy-500">Certificate ID: AVT-2025-0421</span>
-              </div>
-              <p className="text-[10px] sm:text-xs uppercase tracking-widest text-navy-500 mb-2">Certificate of Completion</p>
-              <h3 className="font-display text-xl sm:text-2xl text-navy-800 mb-1">This is to certify that</h3>
-              <p className="font-display text-2xl sm:text-3xl text-navy-700 my-2 sm:my-3">Aarav Sharma</p>
-              <p className="text-xs sm:text-sm text-navy-600 mb-4 sm:mb-6">has successfully completed the program in</p>
-              <p className="font-semibold text-base sm:text-lg text-navy-800 mb-6 sm:mb-8">AI Training for Students</p>
-              <div className="flex justify-between items-end pt-4 sm:pt-6 border-t border-navy-100">
-                <div>
-                  <p className="text-[10px] sm:text-xs text-navy-500">Issued on</p>
-                  <p className="text-xs sm:text-sm font-semibold text-navy-700">March 2025</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-display italic text-navy-700 text-sm sm:text-base">Avatar Academy</p>
-                  <p className="text-[10px] sm:text-xs text-navy-500">Authorized Signature</p>
-                </div>
-              </div>
+            <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
+              <img 
+                src="/assets/images/Certificate for Avatar.png" 
+                alt="Avatar Academy Certificate of Completion" 
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
