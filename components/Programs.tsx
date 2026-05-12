@@ -15,6 +15,7 @@ const programs = [
     features: ["Ethical Hacking Basics", "Social Media Security", "Data Protection"],
     duration: "6 Weeks",
     format: "Online + Live",
+    href: "/cyberwebinar",
   },
   {
     title: "AI Training for Students",
@@ -25,6 +26,7 @@ const programs = [
     features: ["ChatGPT for Studies", "AI Tools for Research", "Coding with AI"],
     duration: "8 Weeks",
     format: "Online + Live",
+    href: "#programs",
   },
   {
     title: "AI for Professionals",
@@ -35,6 +37,8 @@ const programs = [
     features: ["AI for HR & Recruitment", "AI in Design & Editing", "AI Coding Assistants"],
     duration: "10 Weeks",
     format: "Hybrid",
+    href: "#programs",
+
   },
   {
     title: "AI for 45+ Learners",
@@ -45,6 +49,7 @@ const programs = [
     features: ["AI for Daily Productivity", "Smartphone & Digital Tools", "AI for Small Businesses"],
     duration: "4 Weeks",
     format: "Online + Recorded",
+    href: "#programs",
   },
 ];
 
@@ -115,7 +120,7 @@ export default function Programs() {
                   <span>{program.format}</span>
                 </div>
                 <Link
-                  href="#enroll"
+                  href={program.href}
                   className="block w-full text-center bg-navy-700 hover:bg-navy-800 text-white text-sm font-semibold py-2.5 rounded-full transition"
                 >
                   Enroll Now →

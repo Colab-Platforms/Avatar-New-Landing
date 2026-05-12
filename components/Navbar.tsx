@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
-import { Menu, X, Home, BookOpen, Star, MessageCircle, HelpCircle, ArrowRight, Mail, Phone } from "lucide-react";
+import { X, Home, BookOpen, Star, MessageCircle, HelpCircle, ArrowRight, Mail, Phone, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isWebinarDropdownOpen, setIsWebinarDropdownOpen] = useState(false);
+  const [isMobileWebinarOpen, setIsMobileWebinarOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,12 +41,43 @@ export default function Navbar() {
             <img src="/assets/images/Asset 5.svg" alt="Avatar Logo" className="h-8 w-auto" />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-navy-700">
+          <nav className="hidden md:flex items-center gap-8 text-md font-medium text-navy-700">
             <Link href="#home" className="hover:text-navy-900 transition">Home</Link>
-            <Link href="#programs" className="hover:text-navy-900 transition">Programs</Link>
-            <Link href="#why" className="hover:text-navy-900 transition">Why Avatar</Link>
-            <Link href="#testimonials" className="hover:text-navy-900 transition">Testimonials</Link>
-            <Link href="#faqs" className="hover:text-navy-900 transition">FAQs</Link>
+            
+            {/* Webinars Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsWebinarDropdownOpen(true)}
+              onMouseLeave={() => setIsWebinarDropdownOpen(false)}
+            >
+              <button className="flex items-center gap-1 hover:text-navy-900 transition py-2">
+                Webinars
+                <ChevronDown className={`w-4 h-4 transition-transform ${isWebinarDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isWebinarDropdownOpen && (
+                <div className="absolute top-full left-0 pt-2 w-48">
+                  <div className="bg-white border border-navy-100 rounded-lg shadow-lg py-2">
+                    <Link 
+                      href="#programs" 
+                      className="block px-4 py-2 hover:bg-navy-50 transition"
+                    >
+                      All Webinars
+                    </Link>
+                    <Link 
+                      href="/cyberwebinar" 
+                      className="block px-4 py-2 hover:bg-navy-50 transition"
+                    >
+                      Cyber Webinar
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            <Link href="#why" className="hover:text-navy-900 transition">About</Link>
+            <Link href="#testimonials" className="hover:text-navy-900 transition">Blog</Link>
+            <Link href="#faqs" className="hover:text-navy-900 transition">Contact</Link>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -55,7 +88,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`hamburger md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] z-[60] ${isMobileMenuOpen ? "active" : ""}`}
+              className={`hamburger md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[6px] z-60 ${isMobileMenuOpen ? "active" : ""}`}
               aria-label="Toggle menu"
             >
               <span className="hamburger-line block w-6 h-[2px] bg-navy-700 rounded-full origin-center"></span>
@@ -68,7 +101,7 @@ export default function Navbar() {
 
       {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 bg-navy-900/50 z-[55] md:hidden transition-opacity duration-350 ${
+        className={`fixed inset-0 bg-navy-900/50 z-55 md:hidden transition-opacity duration-350 ${
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={closeMenu}
@@ -76,7 +109,7 @@ export default function Navbar() {
 
       {/* Mobile menu drawer */}
       <nav
-        className={`fixed top-0 right-0 w-[280px] max-w-[85vw] h-full bg-white z-[60] shadow-2xl md:hidden flex flex-col transition-transform duration-350 ${
+        className={`fixed top-0 right-0 w-[280px] max-w-[85vw] h-full bg-white z-60 shadow-2xl md:hidden flex flex-col transition-transform duration-350 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -95,9 +128,39 @@ export default function Navbar() {
             <Link href="#home" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
               <Home className="w-5 h-5 text-navy-500" /> Home
             </Link>
-            <Link href="#programs" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
-              <BookOpen className="w-5 h-5 text-navy-500" /> Webinars
-            </Link>
+            
+            {/* Mobile Webinars Dropdown */}
+            <div>
+              <button 
+                onClick={() => setIsMobileWebinarOpen(!isMobileWebinarOpen)}
+                className="mobile-nav-link flex items-center justify-between w-full px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition"
+              >
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-navy-500" /> Webinars
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isMobileWebinarOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {isMobileWebinarOpen && (
+                <div className="ml-8 mt-1 flex flex-col gap-1">
+                  <Link 
+                    href="#programs" 
+                    onClick={closeMenu} 
+                    className="px-4 py-2 rounded-lg text-navy-600 text-sm hover:bg-navy-50 transition"
+                  >
+                    All Webinars
+                  </Link>
+                  <Link 
+                    href="/cyberwebinar" 
+                    onClick={closeMenu} 
+                    className="px-4 py-2 rounded-lg text-navy-600 text-sm hover:bg-navy-50 transition"
+                  >
+                    Cyber Webinar
+                  </Link>
+                </div>
+              )}
+            </div>
+            
             <Link href="#why" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
               <Star className="w-5 h-5 text-navy-500" /> About
             </Link>
