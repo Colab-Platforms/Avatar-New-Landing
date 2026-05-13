@@ -15,18 +15,15 @@ export default function Navbar() {
     const pathname = usePathname(); 
 
   useEffect(() => {
-    // Check initial scroll position on mount
-    // setIsScrolled(window.scrollY > 30);
-
-    // console.log("window.scrollY: ", window.scrollY)
-    // console.log("isScrolled: ", isScrolled)
+    // Check initial scroll position on mount and route changes
+    setIsScrolled(window.scrollY > 30);
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolled]);
+  }, [pathname]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
