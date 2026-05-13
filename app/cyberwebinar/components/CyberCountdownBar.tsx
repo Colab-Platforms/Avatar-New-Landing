@@ -52,29 +52,29 @@ export default function CyberCountdownBar() {
 
   return (
     <div className={`fixed bottom-0 left-0 right-0 w-full z-[1000] bg-black text-[var(--paper)] shadow-lg transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-row sm:flex-row items-center justify-between gap-2 sm:gap-4">
           <div className="flex flex-col sm:flex-row md:items-center gap-2 sm:gap-4 w-full sm:w-auto">
-            <span className="font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider">⚡ LIMITED TIME OFFER ENDS IN:</span>
-            <div className="flex gap-2 sm:gap-4 items-center">
-              <div className="flex flex-col items-center min-w-[50px]">
-                <span className="font-mono text-2xl sm:text-3xl font-bold leading-none">{formatNumber(timeLeft.days)}</span>
-                <span className="text-[10px] uppercase tracking-wider opacity-90 mt-1">DAYS</span>
+            <span className="font-mono text-xs sm:text-sm font-semibold uppercase ">⚡ LIMITED TIME OFFER ENDS IN:</span>
+            <div className="flex justify-center  sm:gap-4 items-center ">
+              <div className="flex flex-col items-center ">
+                <span className="font-mono text-xl sm:text-xl font-bold leading-none">{formatNumber(timeLeft.days)}</span>
+                <span className="text-[10px] uppercase  opacity-90 mt-1">DAYS</span>
               </div>
               <span className="text-xl font-bold opacity-70">:</span>
               <div className="flex flex-col items-center min-w-[50px]">
-                <span className="font-mono text-2xl sm:text-3xl font-bold leading-none">{formatNumber(timeLeft.hours)}</span>
-                <span className="text-[10px] uppercase tracking-wider opacity-90 mt-1">HOURS</span>
+                <span className="font-mono text-xl sm:text-xl font-bold leading-none">{formatNumber(timeLeft.hours)}</span>
+                <span className="text-[10px] uppercase  opacity-90 mt-1">HOURS</span>
               </div>
               <span className="text-xl font-bold opacity-70">:</span>
               <div className="flex flex-col items-center min-w-[50px]">
-                <span className="font-mono text-2xl sm:text-3xl font-bold leading-none">{formatNumber(timeLeft.minutes)}</span>
-                <span className="text-[10px] uppercase tracking-wider opacity-90 mt-1">MINS</span>
+                <span className="font-mono text-xl sm:text-xl font-bold leading-none">{formatNumber(timeLeft.minutes)}</span>
+                <span className="text-[10px] uppercase opacity-90 mt-1">MINS</span>
               </div>
               <span className="text-xl font-bold opacity-70">:</span>
               <div className="flex flex-col items-center min-w-[50px]">
-                <span className="font-mono text-2xl sm:text-3xl font-bold leading-none">{formatNumber(timeLeft.seconds)}</span>
-                <span className="text-[10px] uppercase tracking-wider opacity-90 mt-1">SECS</span>
+                <span className="font-mono text-xl sm:text-xl font-bold leading-none">{formatNumber(timeLeft.seconds)}</span>
+                <span className="text-[10px] uppercase opacity-90 mt-1">SECS</span>
               </div>
             </div>
           </div>
