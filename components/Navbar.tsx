@@ -37,10 +37,12 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-5 z-50 w-full">
+      <header className={`sticky z-50 w-full transition-all duration-350 ${
+        isScrolled ? "top-5" : "top-0 bg-white "
+      }`}>
         <div
-          className={`mx-auto px-4 sm:px-6 py-3 flex items-center justify-between bg-white border-b border-navy-100 transition-all duration-350 ${
-            isScrolled ? "top-3.5 max-w-7xl bg-white/92 backdrop-blur-sm border border-navy-100/50 rounded-full shadow-lg px-6" : "container"
+          className={`mx-auto px-4 sm:px-6 py-3 flex items-center justify-between transition-all duration-350 ${
+            isScrolled ? "max-w-7xl bg-white/92 backdrop-blur-sm  rounded-full shadow-lg px-6" : "container"
           }`}
         >
           <Link href="#" className="flex items-center gap-2.5 no-select">
@@ -48,7 +50,7 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-8 text-md font-medium text-navy-700">
-            <Link href="#home" className="hover:text-navy-900 transition">Home</Link>
+            <Link href="/" className="hover:text-navy-900 transition">Home</Link>
             
             {/* Webinars Dropdown */}
             <div 
@@ -81,7 +83,7 @@ export default function Navbar() {
               )}
             </div>
             
-            <Link href="#why" className="hover:text-navy-900 transition">About</Link>
+            <Link href="/about" className="hover:text-navy-900 transition">About</Link>
             <Link href="#testimonials" className="hover:text-navy-900 transition">Blog</Link>
             <Link href="#faqs" className="hover:text-navy-900 transition">Contact</Link>
           </nav>
@@ -167,7 +169,7 @@ export default function Navbar() {
               )}
             </div>
             
-            <Link href="#why" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
+            <Link href="/about" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
               <Star className="w-5 h-5 text-navy-500" /> About
             </Link>
             <Link href="#testimonials" onClick={closeMenu} className="mobile-nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-navy-700 font-medium hover:bg-navy-50 transition">
