@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { X, User, Mail, Phone, Lock, ShieldCheck } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { config } from 'process';
+
 
 export default function CyberBookingModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,57 +66,79 @@ export default function CyberBookingModal() {
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    setIsSubmitting(true);
+  try {
+     const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
-    try {
-      const serviceID = 'service_7l4lbyj';
-      const templateID = 'template_0kdgldl';
-      const publicKey = 'ozByteCBsOiKFuSwU';
+     if (!GOOGLE_SCRIPT_URL) {
+  throw new Error('Google Sheets URL not configured');
+}
 
-      // IMPORTANT:
-      // These variable names MUST match your EmailJS template
-      // {{ name }}
-      // {{ email }}
-      // {{ phone }}
-      // {{ time }}
+    // SEND DATA TO GOOGLE SHEET
+    const response = await fetch(
+      GOOGLE_SCRIPT_URL,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          webinar: 'Cyber Security Webinar',
+        }),
+      }
+    );
 
-      const templateParams = {
+    const result = await response.json();
+
+    // DUPLICATE VALIDATION
+    if (result.status === 'duplicate') {
+      alert(
+        'You have already registered for this webinar.'
+      );
+      return;
+    }
+
+    // ERROR VALIDATION
+    if (result.status === 'error') {
+      throw new Error(result.message);
+    }
+
+    // Success - send email notification via EmailJS
+    const serviceID = 'service_7l4lbyj';
+    const templateID = 'template_0kdgldl';
+    const publicKey = 'ozByteCBsOiKFuSwU';
+
+    await emailjs.send(
+      serviceID,
+      templateID,
+      {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
         time: new Date().toLocaleString(),
-      };
+      },
+      publicKey
+    );
 
-      await emailjs.send(
-        serviceID,
-        templateID,
-        templateParams,
-        publicKey
-      );
+    alert(
+      `Registration successful!  ${formData.email}`
+    );
 
-      alert(
-        `Inquiry sent successfully! Our team will contact you soon and send the Zoom link to ${formData.email}`
-      );
+    setFormData({ name: '', email: '', phone: '' });
+    closeModal();
 
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-      });
-
-      closeModal();
-    } catch (error) {
-      console.error('Failed to send email:', error);
-
-      alert(
-        'Oops! Something went wrong. Please try again later or contact support.'
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  } catch (error) {
+    console.error('Registration failed:', error);
+    alert('Oops! Something went wrong. Please try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   if (!isOpen) return null;
 
